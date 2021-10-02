@@ -21,14 +21,17 @@ from core import viewsets
 from rest_framework import routers
 # from core.viewsets import *
 from core import viewsets
+
+
 route=routers.DefaultRouter()
 route.register('produtos/',viewsets.ProdutoViewsets,basename='produtos')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('',include('core.urls')), 
-    # path('api/v1/',include('core.urls')),
+    path('',include(route.urls)), 
+    path('',include('core.urls')),
     path('api-auth/',include('rest_framework.urls'),),
-    path('',include(route.urls),),
+   
+    
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

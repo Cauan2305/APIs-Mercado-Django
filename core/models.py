@@ -17,7 +17,7 @@ class Produto (models.Model):
     nome=models.CharField(max_length=100)
     preco=models.FloatField()
     categoria=models.CharField(choices=Categoria_choices,max_length=10)
-
+    imagem=models.ImageField(upload_to='media/',null=True)
 
 
 

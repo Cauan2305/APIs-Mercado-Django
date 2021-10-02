@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'django_filters',
     'rest_framework',
+    'rest_framework.authtoken',
 
     'core',
 ]
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'mercado.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,11 +152,26 @@ REST_FRAMEWORK = {
     # ]
     'DEFAULT_AUTHENTICATION_CLASSES':(
         'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        
     ),
 
     'DEFAULT_PERMISSION_CLASSES':(
         'rest_framework.permissions.IsAdminUser' ,
     ),
 
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+        'PAGE_SIZE': 3,
+
+    # 'DEFAULT_FILTER_BACKENDS': 'django_filters.rest_framework.DjangoFilterBackend',
 
 }
+
+
+# token
+# '870bebe25f1687dc7cd50d2bc4e7b5975fd73fd3'
+
+# JWT_AUTH = {
+#     # Authorization:Token xxx
+#     'JWT_AUTH_HEADER_PREFIX': '870bebe25f1687dc7cd50d2bc4e7b5975fd73fd3',
+# }
